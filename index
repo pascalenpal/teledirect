@@ -7,15 +7,13 @@
     const params = new URLSearchParams(window.location.search);
     let number = params.get('number');
 
-    // Remove the + sign if it exists
-    if (number && number.startsWith('+')) {
-      number = number.substring(1);
-    }
-
     // Redirect to the tel: link with the formatted number
     if (number) {
       window.location.href = `tel:${number}`;
-    } else {
+      setTimeout(() => {
+        window.close();
+    } 1000);
+else {
       document.body.innerHTML = '<p>Invalid number.</p>';
     }
   </script>
