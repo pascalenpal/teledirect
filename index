@@ -2,22 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script>
-    // Get the phone number from the URL parameter
-    const params = new URLSearchParams(window.location.search);
-    let number = params.get('number');
-
-    // Redirect to the tel: link with the formatted number
-    if (number) {
-      window.location.href = `tel:${number}`;
-      setTimeout(() => {
-        window.close();
-    } 1000);
-else {
-      document.body.innerHTML = '<p>Invalid number.</p>';
-    }
-  </script>
   <title>Redirecting...</title>
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const number = params.get('number');
+
+      if (number) {
+        // Redirect to dialer
+        window.location.href = `tel:${number}`;
+        
+        // Optional: close the tab after a short delay (works only in some browsers)
+        setTimeout(() => {
+          window.close();
+        }, 1000);
+      } else {
+        document.body.innerHTML = '<p>Invalid or missing phone number.</p>';
+      }
+    };
+  </script>
 </head>
 <body>
 </body>
